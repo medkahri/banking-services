@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @Setter
 @Data
 @Entity
-@DiscriminatorValue("CUR")
+@DiscriminatorValue("CC")
 public class CurrentAccount extends BankAccount{
 
     private double overDraft ;

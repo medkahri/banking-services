@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @Setter
 @Data
 @Entity
-@DiscriminatorValue("SAV")
+@DiscriminatorValue("SC")
 public class SavingAccount extends BankAccount{
 
     private double interestRate ;

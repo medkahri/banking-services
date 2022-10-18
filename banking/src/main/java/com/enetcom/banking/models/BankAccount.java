@@ -7,17 +7,20 @@ import java.util.Date;
 import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(length = 4 ,name = "TYPE")
 
 
-public class BankAccount {
+public abstract class BankAccount {
 
     @Id
+    @SequenceGenerator(name = "account_sequence",sequenceName = "account_sequence",allocationSize = 1)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "account_sequence"
+    )
     private Long id ;
     private double balance ;
     private Date createdAt ;
@@ -28,8 +31,11 @@ public class BankAccount {
     @OneToMany(mappedBy = "bankAccount")
     private List<AccountOperation> accountOperations ;
 
-
-
-
-
+    public BankAccount(double balance, Date createdAt, AccountStatus status, Customer customer, List<AccountOperation> accountOperations) {
+        this.balance = balance;
+        this.createdAt = createdAt;
+        this.status = status;
+        this.customer = customer;
+        this.accountOperations = accountOperations;
+    }
 }
