@@ -43,6 +43,10 @@ public class CustomerService {
 
 
         List<Customer> customers= customerRepository.findAll();
+        Customer.builder()
+                .id(50L)
+                .email("hi")
+                .build();
         List<CustomerDTO> customersDTO = customers.stream().map(customer -> customerMapper.fromCustomer(customer)).collect(Collectors.toList());
         return customersDTO ;
 

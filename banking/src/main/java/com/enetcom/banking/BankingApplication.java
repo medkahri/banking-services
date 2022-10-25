@@ -14,9 +14,16 @@ public class BankingApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BankingApplication.class, args);
+        int x = 5;
+try {
 
-
-
+    System.out.println(x);
+}catch (Exception e){
+    System.out.println(e);
+}finally {
+    x=6;
+    System.out.println(x);
+}
 
 
     }
